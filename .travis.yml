@@ -10,7 +10,7 @@ services:
 
 before_install:
   - docker pull williamyeh/ansible:ubuntu16.04
-  - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:ubuntu16.04 /bin/sh/ -c "ansible --version"
+  - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:ubuntu16.04 /bin/sh -c "ansible --version"
 
 install:
   - pip install ansible-lint
