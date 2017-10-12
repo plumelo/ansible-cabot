@@ -7,26 +7,26 @@ language: python
 services:
   - docker
 
-# before_install:
-#   - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
-#   - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:master-ubuntu16.04-onbuild
+before_install:
+  - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
+  - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:master-ubuntu16.04-onbuild ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
 
-# Install ansible
-# install:
-#   - pip install ansible ansible-lint
-#   - ansible --version
-
-script:
+Install ansible
+install:
   - pip install ansible ansible-lint
   - ansible --version
-  - ansible-lint tasks/main.yml
-  - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
-  - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
-  - >
-      ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
-      | grep -q 'changed=0.*failed=0'
-      && (echo 'Idempotence test: pass' && exit 0)
-      || (echo 'Idempotence test: fail' && exit 1)
+
+script:
+  # - pip install ansible ansible-lint
+  # - ansible --version
+  # - ansible-lint tasks/main.yml
+  # - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
+  # - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
+  # - >
+  #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
+  #     | grep -q 'changed=0.*failed=0'
+  #     && (echo 'Idempotence test: pass' && exit 0)
+  #     || (echo 'Idempotence test: fail' && exit 1)
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
