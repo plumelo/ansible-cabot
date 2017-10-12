@@ -7,9 +7,9 @@ language: python
 services:
   - docker
 
-before_install:
-  - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
-  - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:master-ubuntu16.04-onbuild
+# before_install:
+#   - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
+#   - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:master-ubuntu16.04-onbuild
 
 script:
   - pip install ansible ansible-lint
