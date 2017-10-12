@@ -2,17 +2,14 @@
 
 sudo: required
 
-services:
-  - docker
-
 language: python
 python: "2.7"
 
+services:
+  - docker
+
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq python-apt python-pycurl
-# Use the new container infrastructure
-sudo: required
+  - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
 
 # Install ansible
 install:
