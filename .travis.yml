@@ -12,9 +12,9 @@ before_install:
   - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
 
 # Install ansible
-install:
-  - pip install ansible ansible-lint
-  - ansible --version
+# install:
+#   - pip install ansible ansible-lint
+#   - ansible --version
 
 script:
   - ansible-lint tasks/main.yml
