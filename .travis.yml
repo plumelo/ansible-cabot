@@ -9,11 +9,11 @@ services:
 
 before_install:
   - docker pull williamyeh/ansible:master-ubuntu16.04-onbuild
-  - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:master-ubuntu16.04-onbuild ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
+  - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:master-ubuntu16.04-onbuild ansible-lint tasks/main.yml
 
-install:
-  - pip install ansible ansible-lint
-  - ansible --version
+# install:
+#   - pip install ansible ansible-lint
+#   - ansible --version
 
 script:
   # - pip install ansible ansible-lint
