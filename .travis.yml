@@ -17,6 +17,7 @@ before_install:
 
 script:
   - pip install ansible-lint
+  - ansible-lint tasks/main.yml
 # before_script:
 #   - pip install ansible-lint
 # script:
