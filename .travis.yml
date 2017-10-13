@@ -18,6 +18,8 @@ before_install:
 script:
   - pip install ansible-lint
   - ansible-lint tasks/main.yml
+  - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
+  - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
 # before_script:
 #   - pip install ansible-lint
 # script:
