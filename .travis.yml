@@ -13,7 +13,7 @@ before_install:
   - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:ubuntu16.04 /bin/sh -c "ansible --version"
 
 install:
-  - pip install ansible-lint
+  - pip install requests==2.5.3 ansible-lint
 
 script:
    - ansible-lint tasks/main.yml
