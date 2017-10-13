@@ -14,7 +14,7 @@ before_install:
 
 install:
   - sudo apt-get install python-dev libffi-dev libssl-dev
-  - pip install ansible-lint
+  - pip install 'requests[security]' --upgrade ansible-lint
 
 script:
    - ansible-lint tasks/main.yml
