@@ -11,10 +11,11 @@ services:
 before_install:
   - docker pull williamyeh/ansible:ubuntu16.04
   - docker run -d -p 127.0.0.1:80:4567 williamyeh/ansible:ubuntu16.04 /bin/sh -c "pip install ansible-lint"
-
-script:
   - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "ansible-lint tasks/main.yml"
   - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml"
+
+script:
+  - pip install ansible-lint
 # before_script:
 #   - pip install ansible-lint
 # script:
