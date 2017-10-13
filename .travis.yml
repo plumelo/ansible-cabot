@@ -15,7 +15,7 @@ before_install:
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-lint tasks/main.yml"
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml"
   - docker run williamyeh/ansible:ubuntu16.04 ansible --version
-  - docker run williamyeh/ansible:ubuntu16.04 ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
+  - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml"
 
 # script:
 #   - pip install ansible-lint
