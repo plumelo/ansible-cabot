@@ -2,5 +2,8 @@
   connection: docker
   tasks:
     - package:
-        name: git
+        name: "{{ item }}"
         state: latest
+      with_items:
+        - git
+        - ansible
