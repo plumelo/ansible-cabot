@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: xenial
   connection: docker
   become: yes
   tasks:
