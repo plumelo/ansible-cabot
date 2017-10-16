@@ -1,6 +1,6 @@
 ---
 
-- hosts: ubuntu
+- hosts: xenial
   connection: docker
   tasks:
     - package:

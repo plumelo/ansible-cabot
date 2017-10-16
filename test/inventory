@@ -1,2 +1,2 @@
 localhost
-ubuntu ansible_connection=docker
+xenial ansible_connection=docker
