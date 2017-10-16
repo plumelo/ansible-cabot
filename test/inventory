@@ -1,2 +1,2 @@
 localhost
-DOCKER_HOST=$(pwd)test/inventory
+DOCKER_HOST=ubuntu:16.04
