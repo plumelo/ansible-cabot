@@ -12,7 +12,7 @@ services:
 before_install:
   - docker pull ubuntu:16.04
   - docker run --name xenial -d ubuntu:16.04
- script:
+script:
   - pip install ansible
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
   - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml
