@@ -9,17 +9,17 @@ services:
   - docker
 
 before_install:
-  - pip install ansible-lint
-  - docker pull williamyeh/ansible:ubuntu16.04
+  - docker pull ubuntu:16.04
+  - docker run -d ubuntu:16.04
   # - docker run -it pip install ansible-lint
   # - docker ps -a
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-lint tasks/main.yml"
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml"
-  - docker run williamyeh/ansible:ubuntu16.04 ansible --version
+  # - docker run ubuntu:16.04 ansible --version
   # - docker run williamyeh/ansible:ubuntu16.04 pip install --upgrade ansible-lint
-  - docker run -it -v $(pwd):/home/cabot -w /home/cabot/ williamyeh/ansible:ubuntu16.04 ls -al
+  # - docker run -it -v $(pwd):/home/cabot -w /home/cabot/ williamyeh/ansible:ubuntu16.04 ls -al
   # - docker run --user williamyeh/ansible:ubuntu16.04 /usr/local/bin/ansible-lint /home/cabot/tasks/main.yml
-  - docker run -it -v $(pwd):/home/cabot -w /home/cabot/ williamyeh/ansible:ubuntu16.04 ansible-lint /home/cabot/task/main.yml
+  # - docker run -it -v $(pwd):/home/cabot -w /home/cabot/ williamyeh/ansible:ubuntu16.04 ansible-lint /home/cabot/task/main.yml
 
 # script:
 #   - pip install ansible-lint
@@ -29,11 +29,9 @@ before_install:
 # # before_script:
 #   - pip install ansible-lint
 script:
-  - ls -al
-  # - ansible-lint tasks/main.yml
-  # - ansible --version
- # - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
-  # - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
+  - ansible-lint tasks/main.yml
+  - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test_docker.yml
+  - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test_docker.yml -u root
   # - >
   #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
   #     | grep -q 'changed=0.*failed=0'
