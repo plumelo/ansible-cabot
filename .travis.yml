@@ -1,6 +1,6 @@
 ---
 
-sudo: required
+# sudo: required
 
 language: python
 python: "2.7"
@@ -31,7 +31,7 @@ before_install:
 script:
   - pip install ansible
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
-  - sudo ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml -u root
+  - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml -u root
   # - >
   #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
   #     | grep -q 'changed=0.*failed=0'
