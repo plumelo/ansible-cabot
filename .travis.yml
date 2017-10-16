@@ -4,7 +4,7 @@ sudo: required
 
 language: python
 python: "2.7"
-install: pip install ansible-lint
+# install: pip install ansible-lint
 services:
   - docker
 
@@ -17,6 +17,7 @@ before_install:
   - docker run williamyeh/ansible:ubuntu16.04 ansible --version
   - docker run --rm -it -v $(pwd):/home/cabot -w /home/cabot/ williamyeh/ansible:ubuntu16.04
   - docker run williamyeh/ansible:ubuntu16.04 ls -al /home/
+  - docker run williamyeh/ansible:ubuntu16.04 pip install ansible-lint
   - docker run williamyeh/ansible:ubuntu16.04 ansible-lint /home/cabot/tasks/main.yml
 
 # script:
