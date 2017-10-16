@@ -6,4 +6,3 @@
         state: latest
       with_items:
         - git
-        - ansible
