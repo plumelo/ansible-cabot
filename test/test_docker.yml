@@ -2,6 +2,7 @@
 
 - hosts: xenial
   connection: docker
+  become: yes
   tasks:
     - package:
         name: "{{ item }}"
