@@ -16,7 +16,7 @@ before_install:
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml"
   - docker run williamyeh/ansible:ubuntu16.04 ansible --version
   # - docker run williamyeh/ansible:ubuntu16.04 ansible-lint tasks/main.yml
-  # - docker run williamyeh/ansible:ubuntu16.04 -d -P -v $(pwd):/tmp -e USERID=$UID /home/vasy/Projects/ansible-role-cabot
+  # - docker run -d -P -v $(pwd):/home/$USER/foo -e USERID=$UID williamyeh/ansible:ubuntu16.04
 
 # script:
 #   - pip install ansible-lint
@@ -26,10 +26,11 @@ before_install:
 # # before_script:
 #   - pip install ansible-lint
 script:
-  - ansible-lint tasks/main.yml
+  - ls -al
+  # - ansible-lint tasks/main.yml
   # - ansible --version
-  - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
-  - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
+ # - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
+  # - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
   # - >
   #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
   #     | grep -q 'changed=0.*failed=0'
