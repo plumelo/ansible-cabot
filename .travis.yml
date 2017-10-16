@@ -16,11 +16,11 @@ script:
   - pip install ansible
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
   - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml
-  # - >
-  #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
-  #     | grep -q 'changed=0.*failed=0'
-  #     && (echo 'Idempotence test: pass' && exit 0)
-  #     || (echo 'Idempotence test: fail' && exit 1)
+    # - >
+    #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
+    #     | grep -q 'changed=0.*failed=0'
+    #     && (echo 'Idempotence test: pass' && exit 0)
+    #     || (echo 'Idempotence test: fail' && exit 1)
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
