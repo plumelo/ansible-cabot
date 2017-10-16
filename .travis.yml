@@ -29,7 +29,7 @@ script:
   - ansible-lint tasks/main.yml
   # - ansible --version
   - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml
-  # - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
+  - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
   # - >
   #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
   #     | grep -q 'changed=0.*failed=0'
