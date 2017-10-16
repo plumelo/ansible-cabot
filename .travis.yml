@@ -31,7 +31,7 @@ before_install:
 script:
   - pip install ansible
   - lsb_release -a
-  - ansible-playbook -i test/inventory --syntax-check --list-tasks test/test_docker.yml
+  - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
   - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml -u root
   # - >
   #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
