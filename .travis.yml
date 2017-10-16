@@ -15,7 +15,7 @@ before_install:
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-lint tasks/main.yml"
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-playbook -i test/inventory --syntax-check --list-tasks test/test.yml"
   - docker run williamyeh/ansible:ubuntu16.04 ansible --version
-  - docker run --rm -it --user travis -v test/test.yml -w /home/ williamyeh/ansible:ubuntu16.04
+  - docker run --rm -it --user travis -v /test/test.yml -w /home/ williamyeh/ansible:ubuntu16.04
   - docker run williamyeh/ansible:ubuntu16.04 /home ls -al
   # - docker run williamyeh/ansible:ubuntu16.04 ansible-lint tasks/main.yml
   # - docker run -d -P -v $(pwd):/home/$USER/foo -e USERID=$UID williamyeh/ansible:ubuntu16.04
