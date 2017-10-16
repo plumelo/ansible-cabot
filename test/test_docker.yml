@@ -1,0 +1,6 @@
+- hosts:  ubuntu:16.04
+  connection: docker
+  tasks:
+    - package:
+        name: git
+        state: latest
