@@ -1,6 +1,6 @@
 ---
 
-- hosts:  ubuntu:16.04
+- hosts: ubuntu
   connection: docker
   tasks:
     - package:

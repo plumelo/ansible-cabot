@@ -1,2 +1,2 @@
 localhost
-ubuntu:16.04 ansible_connection=docker
+ubuntu ansible_connection=docker
