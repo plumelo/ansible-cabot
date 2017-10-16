@@ -4,7 +4,7 @@ sudo: required
 
 language: python
 python: "2.7"
-# install: pip install ansible-lint
+install: pip install ansible-lint
 services:
   - docker
 
@@ -25,6 +25,7 @@ before_install:
 #   - ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
 # # before_script:
 #   - pip install ansible-lint
+script:  "python setup.py develop && nosetests -w test/"
 # script:
   # - pip install ansible ansible-lint
   # - ansible-lint tasks/main.yml
