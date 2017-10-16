@@ -10,7 +10,7 @@ services:
 
 before_install:
   - docker pull ubuntu:16.04
-  - docker run -d --name xenial ubuntu:16.04
+  - docker run --name xenial -d ubuntu:16.04
   # - docker run -it pip install ansible-lint
   # - docker ps -a
   # - docker run williamyeh/ansible:ubuntu16.04 /bin/sh -c "cd /root; ansible-lint tasks/main.yml"
