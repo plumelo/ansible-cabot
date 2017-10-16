@@ -11,6 +11,7 @@ services:
 
 before_install:
   - docker pull ubuntu:16.04
+  - docker ps -a
   - docker run --name xenial -d ubuntu:16.04
 script:
   - pip install ansible
