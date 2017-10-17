@@ -13,7 +13,7 @@ services:
   # - docker pull ubuntu:16.04
 script:
   - pip install ansible
-  - docker pull ubuntu:16.04
+  - docker pull plumelo/xenial
   - docker run -d -it --name xenial plumelo/xenial bash
   - docker ps -a
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
