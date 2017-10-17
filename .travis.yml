@@ -15,7 +15,7 @@ script:
   - pip install ansible
   - docker pull ubuntu:16.04
   - docker run -d --rm --name xenial ubuntu:16.04 sleep 60
-  - docker run -it --name xenial ubuntu:16.04
+  - docker run -it --name xenial bash
   - docker ps -a
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
   - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml
