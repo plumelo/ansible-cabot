@@ -16,6 +16,7 @@ script:
   - docker pull ubuntu:16.04
   - docker run -d --rm --name xenial ubuntu:16.04
   - docker ps -a
+  - docker exec -it xenial bash
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
   - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml
     # - >
