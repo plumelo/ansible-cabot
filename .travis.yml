@@ -9,14 +9,14 @@ python:
 services:
   - docker
 
-before_install:
-  - docker pull ubuntu:16.04
-  - docker ps -l
+# before_install:
+  # - docker pull ubuntu:16.04
 script:
   - pip install ansible
+  - docker pull ubuntu:16.04
   - docker run -d --rm --name xenial ubuntu:16.04
+  - docker ps -a
   - ansible-playbook -i test/inventory --connection=docker --syntax-check --list-tasks test/test_docker.yml
-  - docker ps
   - ansible-playbook -i test/inventory --connection=docker --become -vvvv test/test_docker.yml
     # - >
     #     ansible-playbook -i test/inventory --connection=local --become -vvvv test/test.yml -u root
