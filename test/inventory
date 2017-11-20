@@ -1,2 +1,3 @@
-localhost
-xenial ansible_connection=docker
+localhost ansible_connection=local
+xenial ansible_connection=lxd
+
