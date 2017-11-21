@@ -29,3 +29,12 @@
             user.user-data: "#cloud-config\n{{ cloud_config|to_yaml(indent=2) }}"
           devices: {}
           timeout: 600
+        - name: stretch
+          state: started
+          become: no
+          alias: 'debian/stretch'
+          server: https://us.images.linuxcontainers.org
+          config:
+            user.user-data: "#cloud-config\n{{ cloud_config|to_yaml(indent=2) }}"
+          devices: {}
+          timeout: 600
