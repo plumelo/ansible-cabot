@@ -10,7 +10,7 @@ script:
   - pip install ansible;
   - ansible-galaxy install --role-file test/galaxy.yml
   - sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/lxd.yml'
-  - sleep 10s
+  - sleep 20s
   - sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit xenial'
   - >
       sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit xenial'
