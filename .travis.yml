@@ -13,40 +13,13 @@ script:
   - sudo usermod -a -G lxd travis
   - pip install ansible;
   - ansible-galaxy install --role-file test/galaxy.yml
-  # - if [ ! -z ${IMAGE} ]; then
-  #     sudo add-apt-repository -y ppa:ubuntu-lxc/lxd-stable;
-  #     sudo apt-get -qq update;
-  #     sudo apt-get -y install lxd;
-  #     sudo lxd init --auto;
-  #     lxc  ls;
-  #     sudo usermod -a -G lxd travis;
-  #   fi
-  # - if [ ! -z ${IMAGE} ]; then
-  #     sudo su travis -c 'lxc network create travisbr0';
-  #     sudo su travis -c 'lxc network show travisbr0';
-  #     sudo su travis -c 'lxc network attach-profile travisbr0 default eth0';
-  #     sudo su travis -c 'lxc launch ${IMAGE} ${NAME}';
-  #     sudo su travis -c 'lxc ls';
-  #     sudo su travis -c 'lxc exec ${NAME} -- sh -c "lsb_release -a"';
-  #     sudo su travis -c 'lxc exec ${NAME} -- sudo apt update && sudo apt install python';
-  #     sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit ${NAME}';
-  #   fi
   - sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/lxd.yml'
   - sleep 20s
   - sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit xenial'
-        # sudo su travis -c 'lxc exec ${NAME} -- sh -c "echo 127.0.0.1 ${NAME}.local ${NAME} >> /etc/hosts"';
-        # sudo su travis -c 'lxc ls';
-        # sudo su travis -c 'lxc info ${NAME}';
-        # sudo su travis -c 'lxc exec ${NAME} -- sh -c "sudo apt update && sudo apt install python acl -y"';
-
-  # - sudo su travis -c 'ansible-playbook -i test/inventory -vvvv test/test.yml --limit ${NAME}';
-
-      # sudo newgrp lxd;
-      # sudo lxd init --auto;
-      # sudo su travis -c 'lxc network create travisbr0';
-      # sudo su travis -c 'lxc network attach-profile travisbr0 default eth0';
-      # echo "Before ifconfig";
-      # sudo ifconfig;
-      # sudo lxc profile show default;
+  - >
+      sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit xenial'
+      | grep -q 'changed=0.*failed=0'
+      && (echo 'Idempotence test: pass' && exit 0)
+      || (echo 'Idempotence test: fail' && exit 1)
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
