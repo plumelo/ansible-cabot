@@ -5,6 +5,7 @@
   roles:
     - role: ansible-role-cabot
       cabot_listen_address: 0.0.0.0
+      cabot_install_postgres: yes
       cabot_www_scheme: 'http'
       cabot_plugins:
         - cabot_alert_email
