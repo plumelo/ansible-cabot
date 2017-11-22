@@ -20,6 +20,12 @@
         packages:
           - python
           - acl
+      cloud_config:
+        hostname: stretch
+        manage_etc_hosts: true
+        packages:
+          - python
+          - acl
       lxd_containers:
         - name: xenial
           state: started
