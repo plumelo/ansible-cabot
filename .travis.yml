@@ -17,7 +17,7 @@ script:
       | grep -q 'changed=0.*failed=0'
       && (echo 'Idempotence test: pass' && exit 0)
       || (echo 'Idempotence test: fail' && exit 1)
-  - sudo su travis -c 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/* --limit stretch'
+  - sudo su travis -c 'sudo apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/* --limit stretch'
   - sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit stretch'
   - >
       sudo su travis -c 'source ~/virtualenv/python2.7/bin/activate; ansible-playbook -i test/inventory -vvvv test/test.yml --limit stretch'
